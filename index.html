@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Movie Selector</title>
+  </head>
+
+  <body>
+    <h1>Random Movie Selector</h1>
+  <div class="dropDowns">
+    <label for="streamingService">Select a Streaming Service:</label>
+    <select id="streamingService">
+      <option value="Netflix">Netflix</option>
+      <option value="Amazon Prime">Amazon Prime Video</option>
+      <option value="Hulu">Hulu</option>
+      <option value="DisneyPlus">Disney+</option>
+      <option value="Austin Texas Public Library">Austin Texas Public Library</option>
+    </select>
+
+    <label for="genreChoices">Select a Genre:</label>
+    <select id="pickGenre">
+      <option value="horror">Horror</option>
+      <option value="comedy">Comedy</option>
+      <option value="romCom">RomCom</option>
+      <option value="romance">Romance</option>
+      <option value="drama">Drama</option>
+      <option value="documentary">Documentary</option>
+      <option value="thriller">Thriller</option>
+      <option value="action">Action</option>
+    </select>
+  </div>
+  
+    <div id="randomMovie">
+      <h2>Your Random Movie:</h2>
+      <div id="movieCover"></div>
+      <p id="movieTitle">Title:</p>
+      <p id="movieGenre">Genre:</p>
+      <p id="movieYear">Year:</p>
+    </div>
+
+  </body>
+</html>
