@@ -4,22 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Movie Selector</title>
+    <link src="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body>
-    <h1>Welcome to Your Random Movie Generator</h1>
-    <div class="dropDowns">
-      <label for="streamingService">Select a Streaming Service:</label>
-      <select id="streamingService">
-        <option value="Netflix">Netflix</option>
-        <option value="Amazon Prime">Amazon Prime Video</option>
-        <option value="Hulu">Hulu</option>
-        <option value="DisneyPlus">Disney+</option>
-        <option value="Austin Texas Public Library">
-          Austin Texas Public Library
-        </option>
-      </select>
+    <header>
+      <h1>Welcome to Your Random Movie Generator</h1>
+      <div class="dropDowns">
+        <label for="streamingService">Select a Streaming Service:</label>
+        <select id="streamingService">
+          <option value="Netflix">Netflix</option>
+          <option value="Amazon Prime">Amazon Prime Video</option>
+          <option value="Hulu">Hulu</option>
+          <option value="DisneyPlus">Disney+</option>
+          <option value="Austin Texas Public Library">
+            Austin Texas Public Library
+          </option>
+        </select>
+      </div>
+    </header>
 
+    <div>
       <label for="genreChoices">Select a Genre:</label>
       <select id="genreChoices">
         <option value="horror">Horror</option>
@@ -34,7 +39,7 @@
     </div>
 
     <div>
-      <button>Randomize</button>
+      <button class="randBtn">Randomize</button>
     </div>
 
     <div id="randomMovie">
@@ -68,5 +73,7 @@
         <p id="movieYear-4">Year:</p>
       </div>
     </div>
+
+    <script src="assets/js/scrpit.js" defer></script>
   </body>
 </html>

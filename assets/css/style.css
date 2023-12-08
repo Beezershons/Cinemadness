@@ -1,70 +1,66 @@
 /* creates colors that can be refered back to */
 :root {
-    --MainBlack: #212121;
-    --MainGray: rgb(72, 72, 72);
-    --BlueLettering: #0066ff;
-    --WhiteLettering: #f2f2f2;
+  --MainBlack: #212121;
+  --MainGray: rgb(72, 72, 72);
+  --BlueLettering: #0066ff;
+  --WhiteLettering: #f2f2f2;
 }
 
 body {
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 16px;
-    background-color: var(--MainBlack);
-    color: var(--WhiteLettering);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 16px;
+  background-color: var(--MainBlack);
+  color: var(--WhiteLettering);
 }
 
 header {
-    font-family: 'Young Serif', serif;
-    font-size: 36px;
-    background-color: var(--MainBlack);
-    color: var(--BlueLettering);
+  font-family: 'Young Serif', serif;
+  font-size: 36px;
+  background-color: var(--MainBlack);
+  color: var(--BlueLettering);
 }
 
-.RanBtn {
-    background-color: var(--MainGray);
+.randBtn {
+  background-color: var(--MainGray);
 }
 
-.RanBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+.randBtn i:hover {
+  background-color: radial-gradient(#d9d9d9, #646465);
 }
 
-.GenreBtn {
-    background-color: var(--MainGray);
+.genreBtn {
+  background-color: var(--MainGray);
 }
 
-.GenreBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+.genreBtn i:hover {
+  background-color: radial-gradient(#d9d9d9, #646465);
 }
 
-.StreamBtn {
-    background-color: var(--MainGray);
+.streamBtn {
+  background-color: var(--MainGray);
 }
 
-.StreamBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+.streamBtn i:hover {
+  background-color: radial-gradient(#d9d9d9, #646465);
 }
 
-.MovieContainer {
-    background-color: var(--MainBlack);
-    display: flex;
-    flex-flow: row wrap;
-    margin: 20px;
-    font-size: 25px;
-    align-items: start;
+.movieContainer {
+  background-color: var(--MainBlack);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 20px;
+  font-size: 25px;
+  align-items: start;
 }
 
 .dropDowns {
-
 }
 
 #streamingService {
-
 }
 
 .pickGenre {
-
 }
 
 .randomMovie {
-    
 }
