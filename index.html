@@ -10,38 +10,44 @@
   <body>
     <header>
       <h1>Welcome to Your Random Movie Generator</h1>
+      
       <div class="dropDowns">
         <label for="streamingService">Select a Streaming Service:</label>
         <select id="streamingService">
           <option value="Netflix">Netflix</option>
           <option value="Amazon Prime">Amazon Prime Video</option>
           <option value="Hulu">Hulu</option>
+          <option value="Max">Max</option>
+          <option value="Peacock">Peacock+</option>
+          <option value="Paramount+">Paramount+</option>
           <option value="DisneyPlus">Disney+</option>
           <option value="Austin Texas Public Library">
             Austin Texas Public Library
           </option>
         </select>
       </div>
+      
+      <!-- This div contains a drop down prompting the user to select a genre -->
+      <div>
+        <label for="genreChoices">Select a Genre:</label>
+        <select id="genreChoices">
+          <option value="horror">Horror</option>
+          <option value="comedy">Comedy</option>
+          <option value="romCom">RomCom</option>
+          <option value="romance">Romance</option>
+          <option value="drama">Drama</option>
+          <option value="documentary">Documentary</option>
+          <option value="thriller">Thriller</option>
+          <option value="action">Action</option>
+        </select>
+      </div>
+      
+      <div>
+        <button class="randBtn">Randomize</button>
+      </div>
     </header>
-
-    <div>
-      <label for="genreChoices">Select a Genre:</label>
-      <select id="genreChoices">
-        <option value="horror">Horror</option>
-        <option value="comedy">Comedy</option>
-        <option value="romCom">RomCom</option>
-        <option value="romance">Romance</option>
-        <option value="drama">Drama</option>
-        <option value="documentary">Documentary</option>
-        <option value="thriller">Thriller</option>
-        <option value="action">Action</option>
-      </select>
-    </div>
-
-    <div>
-      <button class="randBtn">Randomize</button>
-    </div>
-
+  <main>
+    <!-- This div contains a random movie from the requested genre -->
     <div id="randomMovie">
       <h2>Your Random Movie:</h2>
       <div id="movieCover"></div>
@@ -50,7 +56,9 @@
       <p id="movieYear">Year:</p>
     </div>
 
-    <div id="otherOptions">
+    <!-- This div contains 4 movies that are randoml selected as backups to the main suggestion -->
+    <!-- The 4 movies are from the same gnre as the requested genre -->
+    <div id="otherOptions"> 
       <h2>Here are four backups:</h2>
       <div id="randomMoviePlaceholder-1">
         <p id="movieTitle-1">Title:</p>
@@ -73,6 +81,9 @@
         <p id="movieYear-4">Year:</p>
       </div>
     </div>
+  </main>
+    <!-- Maybe insert, within the footer, a cover from one of the comic books -->
+    <footer>Created by Group 4 - The Defenders!</footer>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="assets/js/scrpit.js"></script>
   </body>
