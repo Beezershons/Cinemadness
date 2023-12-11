@@ -1,70 +1,105 @@
 /* creates colors that can be refered back to */
 :root {
-    --MainBlack: #212121;
-    --MainGray: rgb(72, 72, 72);
-    --BlueLettering: #0066ff;
-    --WhiteLettering: #f2f2f2;
+  --MainBlack: #212121;
+  --MainGray: rgb(72, 72, 72);
+  --BlueLettering: #0066ff;
+  --WhiteLettering: #f2f2f2;
 }
 
 body {
-    font-family: 'Comfortaa', sans-serif;
-    font-size: 16px;
-    background-color: var(--MainBlack);
-    color: var(--WhiteLettering);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 16px;
+  background-color: var(--MainBlack);
+  color: var(--WhiteLettering);
 }
 
 header {
-    font-family: 'Young Serif', serif;
-    font-size: 36px;
-    background-color: var(--MainBlack);
-    color: var(--BlueLettering);
+  font-family: 'Young Serif', serif;
+  font-size: 32px;
+  background-color: var(--MainBlack);
+  color: var(--BlueLettering);
 }
 
-.RanBtn {
-    background-color: var(--MainGray);
+.head1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.RanBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+#streamingService{
+  height: 30px;
+  font-size: 16px;
+  width: auto;
 }
 
-.GenreBtn {
-    background-color: var(--MainGray);
+#genreChoices{
+  height: 30px;
+  font-size: 16px;
 }
 
-.GenreBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+.randBtn {
+  background-color: var(--MainGray);
+  color: var(--WhiteLettering);
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  transition:300ms;
 }
 
-.StreamBtn {
-    background-color: var(--MainGray);
+.randBtn:hover {
+  background-color: var(--BlueLettering);
+  color: var(--MainBlack);
+  cursor: pointer;
+  transition: 300ms;
 }
 
-.StreamBtn i:hover {
-    background-color: radial-gradient(#d9d9d9, #646465);
+.genreBtn {
+  background-color: var(--MainGray);
 }
 
-.MovieContainer {
-    background-color: var(--MainBlack);
-    display: flex;
-    flex-flow: row wrap;
-    margin: 20px;
-    font-size: 25px;
-    align-items: start;
+.genreBtn i:hover {
+  background-color: radial-gradient(#d9d9d9, #646465);
+}
+
+.streamBtn {
+  background-color: var(--MainGray);
+}
+
+.streamBtn i:hover {
+  background-color: radial-gradient(#d9d9d9, #646465);
+}
+
+.otherOptions {
+  background-color: var(--MainBlack);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 20px;
+  font-size: 25px;
+  align-items: start;
 }
 
 .dropDowns {
-
 }
 
 #streamingService {
-
 }
 
 .pickGenre {
-
 }
 
 .randomMovie {
-    
+}
+
+footer{
+  border-top: groove 1px var(--WhiteLettering);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#foot-img{
+  height: 200px;
+  width: 129.945px;
 }
