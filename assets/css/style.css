@@ -15,17 +15,43 @@ body {
 
 header {
   font-family: 'Young Serif', serif;
-  font-size: 36px;
+  font-size: 32px;
   background-color: var(--MainBlack);
   color: var(--BlueLettering);
 }
 
-.randBtn {
-  background-color: var(--MainGray);
+.head1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.randBtn i:hover {
-  background-color: radial-gradient(#d9d9d9, #646465);
+#streamingService{
+  height: 30px;
+  font-size: 16px;
+  width: auto;
+}
+
+#genreChoices{
+  height: 30px;
+  font-size: 16px;
+}
+
+.randBtn {
+  background-color: var(--MainGray);
+  color: var(--WhiteLettering);
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  transition:300ms;
+}
+
+.randBtn:hover {
+  background-color: var(--BlueLettering);
+  color: var(--MainBlack);
+  cursor: pointer;
+  transition: 300ms;
 }
 
 .genreBtn {
@@ -44,7 +70,7 @@ header {
   background-color: radial-gradient(#d9d9d9, #646465);
 }
 
-.movieContainer {
+.otherOptions {
   background-color: var(--MainBlack);
   display: flex;
   flex-flow: row wrap;
@@ -63,4 +89,17 @@ header {
 }
 
 .randomMovie {
+}
+
+footer{
+  border-top: groove 1px var(--WhiteLettering);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#foot-img{
+  height: 200px;
+  width: 129.945px;
 }
