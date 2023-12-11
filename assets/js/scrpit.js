@@ -4,14 +4,20 @@
 
 $(document).ready(function () {
     const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
-  
-    $('#streamingService, #pickGenre').change(function () {
-      getRandomMovie();
+
+    // Set up event listener for changes in streaming service and genre
+    $('#streamingService, #genreChoices').change(function () {
+        getRandomMovie();
     });
-  
+
+    // Set up event listener for the "Randomize" button
+    $('button').click(function () {
+        getRandomMovie();
+    });
+
     function getRandomMovie() {
-      const streamingService = $('#streamingService').val();
-      const genre = $('#pickGenre').val();
+        const streamingService = $('#streamingService').val();
+        const genre = $('#genreChoices').val();
 
       $.ajax({
         url: `https://api.themoviedb.org/3/discover/movie`,
@@ -29,26 +35,25 @@ $(document).ready(function () {
           $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
           $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Movie Poster">`);
         },
-        // Should this error be a modal so the user knows there is an error? Otherwise nothing will happen on the website and the user will assume the site doesn't work.
         error: function (error) {
           console.error('Error fetching random movie:', error);
         },
       });
     }
-  
+
+    // Helper function to map genre names to TMDB genre ids
     function getGenreId(genre) {
-      const genreMap = {
-        horror: 27,
-        comedy: 35,
-        romCom: 10749,
-        romance: 10749,
-        drama: 18,
-        documentary: 99,
-        thriller: 53,
-        action: 28,
-      };
-  
-      return genreMap[genre] || '';
+        const genreMap = {
+            horror: 27,
+            comedy: 35,
+            romCom: 10749,
+            romance: 10749,
+            drama: 18,
+            documentary: 99,
+            thriller: 53,
+            action: 28,
+        };
+
+        return genreMap[genre] || '';
     }
-  });
-  
+});
