@@ -4,11 +4,12 @@
   --MainGray: rgb(72, 72, 72);
   --BlueLettering: #0066ff;
   --WhiteLettering: #f2f2f2;
+  --movieDiscripfontsize: 16px;
 }
 
 body {
   font-family: 'Comfortaa', sans-serif;
-  font-size: 16px;
+  font-size: var(--movieDiscripfontsize);
   background-color: var(--MainBlack);
   color: var(--WhiteLettering);
 }
@@ -18,6 +19,7 @@ header {
   font-size: 32px;
   background-color: var(--MainBlack);
   color: var(--BlueLettering);
+  text-align: center;
 }
 
 .head1{
@@ -28,7 +30,7 @@ header {
 
 #streamingService{
   height: 30px;
-  font-size: 16px;
+  font-size: var(--movieDiscripfontsize);
   width: auto;
 }
 
@@ -79,6 +81,14 @@ header {
   align-items: start;
 }
 
+.head1 {
+  padding: 20px;
+}
+
+.head1, div {
+  padding: 10px;
+}
+
 .dropDowns {
 }
 
@@ -88,7 +98,33 @@ header {
 .pickGenre {
 }
 
-.randomMovie {
+#randomMovie {
+  margin-left: 30px;
+}
+
+#movieCover {
+  
+}
+
+
+#randomMoviePlaceholder-1 {
+ padding: 15px;
+ font-size: var(--movieDiscripfontsize);
+}
+
+#randomMoviePlaceholder-2 {
+  padding: 15px;
+  font-size: var(--movieDiscripfontsize);
+}
+
+#randomMoviePlaceholder-3 {
+  padding: 15px;
+  font-size: var(--movieDiscripfontsize);
+}
+
+#randomMoviePlaceholder-4 {
+  padding: 15px;
+  font-size: var(--movieDiscripfontsize);
 }
 
 footer{
