@@ -38,28 +38,6 @@ $(document).ready(function () {
         const streamingService = $('#streamingService').val();
         const genre = $('#genreChoices').val();
 
-<<<<<<< HEAD
-      $.ajax({
-        url: `https://api.themoviedb.org/3/discover/movie`,
-        method: 'GET',
-        data: {
-          api_key: apiKey,
-          with_genres: getGenreId(genre),
-        },
-        success: function (data) {
-          const randomIndex = Math.floor(Math.random() * data.results.length);
-          const movie = data.results[randomIndex];
-  
-          $('#movieTitle').text(`Title: ${movie.title}`);
-          $('#movieGenre').text(`Genre: ${genre}`);
-          $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
-          $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`);
-        },
-        error: function (error) {
-          console.error('Error fetching random movie:', error);
-        },
-      });
-=======
         // Map streaming services to TMDB API endpoints
         const streamingServiceMap = {
             netflix: '8', // Replace '8' with the actual TMDB streaming service id for Netflix
@@ -86,13 +64,12 @@ $(document).ready(function () {
                 $('#movieTitle').text(`Title: ${movie.title}`);
                 $('#movieGenre').text(`Genre: ${genre}`);
                 $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
-                $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Movie Poster">`);
+                $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`);
             },
             error: function (error) {
                 console.error('Error fetching random movie:', error);
             },
         });
->>>>>>> b7eed11eaf61685c71313659f97c3336af579329
     }
 
     // Helper function to map genre names to TMDB genre ids
