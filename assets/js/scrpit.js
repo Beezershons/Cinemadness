@@ -33,7 +33,7 @@ $(document).ready(function () {
           $('#movieTitle').text(`Title: ${movie.title}`);
           $('#movieGenre').text(`Genre: ${genre}`);
           $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
-          $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Movie Poster">`);
+          $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`);
         },
         error: function (error) {
           console.error('Error fetching random movie:', error);
