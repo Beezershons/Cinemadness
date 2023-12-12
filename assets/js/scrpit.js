@@ -75,14 +75,14 @@ $(document).ready(function () {
     // Helper function to map genre names to TMDB genre ids
     function getGenreId(genre) {
         const genreMap = {
-            horror: 27,
-            comedy: 35,
-            romCom: 10749,
-            romance: 10749,
-            drama: 18,
-            documentary: 99,
-            thriller: 53,
-            action: 28,
+            Horror: 27,
+            Comedy: 35,
+            RomCom: 10749,
+            Romance: 10749,
+            Drama: 18,
+            Documentary: 99,
+            Thriller: 53,
+            Action: 28,
         };
 
         return genreMap[genre] || '';
