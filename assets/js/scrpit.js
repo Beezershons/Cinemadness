@@ -15,23 +15,60 @@ $(document).ready(function () {
         $.ajax({
             url: 'https://api.themoviedb.org/3/watch/providers/movie',
             method: 'GET',
+            headers: {
+                'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Replace YOUR_ACCESS_TOKEN with the actual access token
+                'Accept': 'application/json',
+            },
             data: {
                 api_key: apiKey,
+                language: 'en-US',
             },
             success: function (data) {
-                // Assuming data.results is an array of movie providers
                 const movieProviders = data.results;
-
-                // Update your UI or perform actions based on available movie providers
                 console.log('Movie Providers:', movieProviders);
 
-                // Call getRandomMovie() to fetch a random movie based on the selected streaming service and genre
-                getRandomMovie();
+                // Fetch streaming service IDs dynamically
+                fetchStreamingServiceIds();
             },
             error: function (error) {
                 console.error('Error fetching movie providers:', error);
             },
         });
+    }
+    async function fetchStreamingServiceIds() {
+        const streamingServiceMap = {
+            netflix: null,
+            amazon_prime: null,
+            // Add more streaming services as needed
+        };
+
+        for (const service in streamingServiceMap) {
+            if (streamingServiceMap.hasOwnProperty(service)) {
+                const response = await $.ajax({
+                    url: 'https://api.themoviedb.org/3/watch/providers/movie',
+                    method: 'GET',
+                    data: {
+                        api_key: apiKey,
+                        region: 'US', 
+                    },
+                    dataType: 'json',
+                });
+
+                console.log('API Response:', response);
+                // Find the streaming service ID from the API response
+                const serviceData = response.results.find(item => item.provider_name.toLowerCase() === service);
+                if (serviceData) {
+                    streamingServiceMap[service] = serviceData.provider_id.toString();
+                }
+            }
+        }
+        console.log('API Request URL:', 'https://api.themoviedb.org/3/watch/providers', { api_key: apiKey, region: 'US' });
+
+        // Now, streamingServiceMap will be populated with actual TMDB streaming service IDs
+        console.log('Updated Streaming Service IDs:', streamingServiceMap);
+
+        // Call getRandomMovie() to fetch a random movie based on the selected streaming service and genre
+        getRandomMovie();
     }
 
     function getRandomMovie() {
@@ -88,3 +125,7 @@ $(document).ready(function () {
         return genreMap[genre] || '';
     }
 });
+//curl --request GET 
+   //  --url 'https://api.themoviedb.org/3/watch/providers/movie?language=en-US' \
+   //  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjc5MjRhMWU5MGU1MGMzNTVlZGYzNzk4ZTBiZjQwMCIsInN1YiI6IjY1NzI3NGRiMjExY2U1MDExYmZlY2YyMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Q4XaeeNH7quaqUxYCtRma0vhqh6js0QBiN4MQxfZY2s' \
+  //   --header 'accept: application/json'//
