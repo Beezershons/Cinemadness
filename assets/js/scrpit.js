@@ -16,7 +16,7 @@ $(document).ready(function () {
             url: 'https://api.themoviedb.org/3/watch/providers/movie',
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Replace YOUR_ACCESS_TOKEN with the actual access token
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjc5MjRhMWU5MGU1MGMzNTVlZGYzNzk4ZTBiZjQwMCIsInN1YiI6IjY1NzI3NGRiMjExY2U1MDExYmZlY2YyMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Q4XaeeNH7quaqUxYCtRma0vhqh6js0QBiN4MQxfZY2s',
                 'Accept': 'application/json',
             },
             data: {
@@ -125,7 +125,40 @@ $(document).ready(function () {
         return genreMap[genre] || '';
     }
 });
-//curl --request GET 
-   //  --url 'https://api.themoviedb.org/3/watch/providers/movie?language=en-US' \
-   //  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjc5MjRhMWU5MGU1MGMzNTVlZGYzNzk4ZTBiZjQwMCIsInN1YiI6IjY1NzI3NGRiMjExY2U1MDExYmZlY2YyMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Q4XaeeNH7quaqUxYCtRma0vhqh6js0QBiN4MQxfZY2s' \
-  //   --header 'accept: application/json'//
+// Function to generate a random movie and update the UI for the other random movie placeholders
+// Function to generate a random movie and update the UI for the other random movie placeholders
+function generateRandomMovieForPlaceholder(placeholderNumber, genreId, streamingServiceId, genre) {
+    const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
+    $.ajax({
+        url: `https://api.themoviedb.org/3/discover/movie`,
+        method: 'GET',
+        data: {
+            api_key: apiKey,
+            with_genres: genreId,
+            with_watch_providers: streamingServiceId,
+        },
+        success: function (data) {
+            const randomIndex = Math.floor(Math.random() * data.results.length);
+            const movie = data.results[randomIndex];
+
+            // Update the HTML with movie details for the specific placeholder
+            $(`#movieTitle-${placeholderNumber}`).text(`Title: ${movie.title}`);
+            $(`#movieGenre-${placeholderNumber}`).text(`Genre: ${genre}`);
+            $(`#movieYear-${placeholderNumber}`).text(`Year: ${movie.release_date.substring(0, 4)}`);
+            // Update the movie cover for the specific placeholder
+            $(`#movieCover-${placeholderNumber}`).html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width="250" height="375" alt="Movie Poster">`);
+        },
+        error: function (error) {
+            console.error(`Error fetching random movie for placeholder ${placeholderNumber}:`, error);
+        }
+    });
+}
+    $(document).ready(function () {
+        $('button').click(function () {
+            // Get random movies for all four placeholders
+            generateRandomMovieForPlaceholder(1, '27', '8', 'Horror');
+            generateRandomMovieForPlaceholder(2, '35', '119', 'Comedy');
+            generateRandomMovieForPlaceholder(3, '18', '8', 'Drama');
+            generateRandomMovieForPlaceholder(4, '10749', '119', 'Romance'); // Example for the fourth placeholder
+        });
+    });
