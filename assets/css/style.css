@@ -56,20 +56,9 @@ header {
   transition: 300ms;
 }
 
-.genreBtn {
-  background-color: var(--MainGray);
-}
-
-.genreBtn i:hover {
-  background-color: radial-gradient(#d9d9d9, #646465);
-}
-
-.streamBtn {
-  background-color: var(--MainGray);
-}
-
-.streamBtn i:hover {
-  background-color: radial-gradient(#d9d9d9, #646465);
+.backupLable {
+  text-align: center;
+  font-size: 30px;
 }
 
 .otherOptions {
@@ -78,7 +67,7 @@ header {
   flex-flow: row wrap;
   margin: 20px;
   font-size: 25px;
-  align-items: start;
+  align-items: center;
 }
 
 .head1 {
@@ -89,23 +78,9 @@ header {
   padding: 10px;
 }
 
-.dropDowns {
-}
-
-#streamingService {
-}
-
-.pickGenre {
-}
-
 #randomMovie {
   text-align: center;
 }
-
-#movieCover {
-  
-}
-
 
 #randomMoviePlaceholder-1 {
  padding: 15px;
