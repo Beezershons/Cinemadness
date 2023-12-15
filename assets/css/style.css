@@ -61,6 +61,7 @@ header {
   font-size: 30px;
 }
 
+/* adds styling to the otherOptions class */
 .otherOptions {
   background-color: var(--MainBlack);
   display: flex;
@@ -70,38 +71,46 @@ header {
   align-items: center;
 }
 
+/* adds padding to the head1 class */
 .head1 {
   padding: 20px;
 }
 
+/* adds padding to the div located in the head1 class */
 .head1, div {
   padding: 10px;
 }
 
+/* centers the text in the randomMovie id */
 #randomMovie {
   text-align: center;
 }
 
+/* adds padding and a font size to the 1st secondary movie option */
 #randomMoviePlaceholder-1 {
  padding: 15px;
  font-size: var(--movieDiscripfontsize);
 }
 
+/* adds padding and a font size to the 2nd secondary movie option */
 #randomMoviePlaceholder-2 {
   padding: 15px;
   font-size: var(--movieDiscripfontsize);
 }
 
+/* adds padding and a font size to the 3rd secondary movie option */
 #randomMoviePlaceholder-3 {
   padding: 15px;
   font-size: var(--movieDiscripfontsize);
 }
 
+/* adds padding and a font size to the 4th secondary movie option */
 #randomMoviePlaceholder-4 {
   padding: 15px;
   font-size: var(--movieDiscripfontsize);
 }
 
+/* styles the footer elements in the html adding a border to the top */
 footer{
   border-top: groove 1px var(--WhiteLettering);
   display: flex;
@@ -110,6 +119,7 @@ footer{
   align-items: center;
 }
 
+/* sets size parameters for the img in the footer */
 #foot-img{
   height: 200px;
   width: 129.945px;
