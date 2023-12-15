@@ -2,11 +2,11 @@ $(document).ready(function () {
     const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
 
     // Set up event listener for changes in streaming service and genre
-    $('#streamingService, #genreChoices').change(function () {
-        getMovieProviders();
+    // $('#streamingService, #genreChoices').change(function () {
+    //     getMovieProviders();
        
 
-    });
+    // });
 
     // Set up event listener for the "Randomize" button
     $('button').click(function () {
