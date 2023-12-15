@@ -4,6 +4,8 @@ $(document).ready(function () {
     // Set up event listener for changes in streaming service and genre
     $('#streamingService, #genreChoices').change(function () {
         getMovieProviders();
+       
+
     });
 
     // Set up event listener for the "Randomize" button
@@ -39,6 +41,11 @@ $(document).ready(function () {
         const streamingServiceMap = {
             netflix: null,
             amazon_prime: null,
+            hulu: null,
+            paramount_plus: null,
+            disney_plus: null,
+            hbo_max: null,
+
             // Add more streaming services as needed
         };
 
@@ -68,13 +75,22 @@ $(document).ready(function () {
         console.log('Updated Streaming Service IDs:', streamingServiceMap);
 
         // Call getRandomMovie() to fetch a random movie based on the selected streaming service and genre
+        const genreId = ''
+        const streamingServiceId = ''
+        const genre = ''
+        console.log('streamingServiceId', streamingServiceId);
         getRandomMovie();
+        generateRandomMovieForPlaceholder(1, genreId, streamingServiceId, genre);
+        generateRandomMovieForPlaceholder(2, genreId, streamingServiceId, genre);
+        generateRandomMovieForPlaceholder(3, genreId, streamingServiceId, genre);
+        generateRandomMovieForPlaceholder(4, genreId, streamingServiceId, genre);
     }
 
     function getRandomMovie() {
         const streamingService = $('#streamingService').val();
         const genre = $('#genreChoices').val();
-
+        const providerName = $('#streamingService').val();
+        
         // Map streaming services to TMDB API endpoints
         const streamingServiceMap = {
             netflix: '8', // Replace '8' with the actual TMDB streaming service id for Netflix
@@ -86,7 +102,7 @@ $(document).ready(function () {
         const tmdbStreamingServiceId = streamingServiceMap[streamingService] || '';
 
         $.ajax({
-            url: `https://api.themoviedb.org/3/discover/movie`,
+            url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}&watch_region=usa`,
             method: 'GET',
             data: {
                 api_key: apiKey,
@@ -102,6 +118,7 @@ $(document).ready(function () {
                 $('#movieGenre').text(`Genre: ${genre}`);
                 $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
                 $('#movieCover').html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`);
+                $(`#movieService`).text(`Streaming Service: ${providerName}`);
             },
             error: function (error) {
                 console.error('Error fetching random movie:', error);
@@ -126,11 +143,12 @@ $(document).ready(function () {
     }
 });
 // Function to generate a random movie and update the UI for the other random movie placeholders
-// Function to generate a random movie and update the UI for the other random movie placeholders
 function generateRandomMovieForPlaceholder(placeholderNumber, genreId, streamingServiceId, genre) {
+    const providerName = $('#streamingService').val();
+
     const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
     $.ajax({
-        url: `https://api.themoviedb.org/3/discover/movie`,
+        url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}`,
         method: 'GET',
         data: {
             api_key: apiKey,
@@ -138,6 +156,7 @@ function generateRandomMovieForPlaceholder(placeholderNumber, genreId, streaming
             with_watch_providers: streamingServiceId,
         },
         success: function (data) {
+            console.log(data)
             const randomIndex = Math.floor(Math.random() * data.results.length);
             const movie = data.results[randomIndex];
 
@@ -147,6 +166,7 @@ function generateRandomMovieForPlaceholder(placeholderNumber, genreId, streaming
             $(`#movieYear-${placeholderNumber}`).text(`Year: ${movie.release_date.substring(0, 4)}`);
             // Update the movie cover for the specific placeholder
             $(`#movieCover-${placeholderNumber}`).html(`<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width="250" height="375" alt="Movie Poster">`);
+            $(`#streamingService-${placeholderNumber}`).text(`Streaming Service: ${providerName}`);
         },
         error: function (error) {
             console.error(`Error fetching random movie for placeholder ${placeholderNumber}:`, error);
@@ -159,6 +179,6 @@ function generateRandomMovieForPlaceholder(placeholderNumber, genreId, streaming
             generateRandomMovieForPlaceholder(1, '27', '8', 'Horror');
             generateRandomMovieForPlaceholder(2, '35', '119', 'Comedy');
             generateRandomMovieForPlaceholder(3, '18', '8', 'Drama');
-            generateRandomMovieForPlaceholder(4, '10749', '119', 'Romance'); // Example for the fourth placeholder
+            generateRandomMovieForPlaceholder(4, '10749', '119', 'Romance'); 
         });
     });
