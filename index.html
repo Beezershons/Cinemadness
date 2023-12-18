@@ -4,25 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Movie Selector</title>
-    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/normalize.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- adds google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Young+Serif&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <header>
-<<<<<<< HEAD
-      <h1>Welcome to Cine-Madness</h1>
-=======
       <h1 class="webTitle">Cinemadness</h1>
       <h1>Your Random Movie Generator</h1>
->>>>>>> f0b76b2c6a47d6a78636e5bf16e0dc3509009716
       <div class="head1">
         <div class="dropDowns">
           <label for="streamingService">Select a Streaming Service:</label>
@@ -34,12 +36,9 @@
             <option value="Peacock">Peacock+</option>
             <option value="Paramount+">Paramount+</option>
             <option value="Disney+">Disney+</option>
-            <option value="Austin Texas Public Library">
-              Austin Texas Public Library
-            </option>
           </select>
         </div>
-        
+
         <!-- This div contains a drop down prompting the user to select a genre -->
         <div>
           <label for="genreChoices">Select a Genre:</label>
@@ -57,68 +56,68 @@
         <div>
           <button class="randBtn">Randomize</button>
         </div>
-    </div>
+      </div>
     </header>
-  <main>
-    <!-- This div contains a random movie from the requested genre -->
-    <div id="randomMovie">
-      <h2>Your Random Movie:</h2>
-      <div id="movieCover"></div>
-      <p id="movieService">Streaming Service:</p>
-      <p id="movieTitle">Title:</p>
-      <p id="movieGenre">Genre:</p>
-      <p id="movieYear">Year:</p>
-<p id="imdbRating">IMDb Rating: </p>
-<p id="rottenTomatoesRating">Rotten Tomatoes Rating: </p>
+    <main>
+      <!-- This div contains a random movie from the requested genre -->
+      <div id="randomMovie">
+        <h2>Your Random Movie:</h2>
+        <div id="movieCover"></div>
+        <p id="movieService">Streaming Service:</p>
+        <p id="movieTitle">Title:</p>
+        <p id="movieGenre">Genre:</p>
+        <p id="movieYear">Year:</p>
+        <p id="imdbRating">IMDb Rating:</p>
+        <p id="rottenTomatoesRating">Rotten Tomatoes Rating:</p>
+      </div>
 
-    </div>
-
-    <!-- This div contains 4 movies that are randomly selected as backups to the main suggestion -->
-    <!-- The 4 movies are from the same genre as the requested genre -->
-    <h2 class="backupLable">Here are four backups:</h2>
-    <div class="otherOptions"> 
-      <div id="randomMoviePlaceholder-1">
-        <div id="movieCover-1"></div>
-        <p id="streamingService-1">Streaming Service:</p>
-        <p id="movieTitle-1">Title:</p>
-        <p id="movieGenre-1">Genre:</p>
-        <p id="movieYear-1">Year:</p>
-        <p id="imdbRating">IMDb Rating: </p>
-<p id="rottenTomatoesRating">Rotten Tomatoes Rating: </p>
+      <!-- This div contains 4 movies that are randomly selected as backups to the main suggestion -->
+      <!-- The 4 movies are from the same genre as the requested genre -->
+      <h2 class="backupLable">Here are four backups:</h2>
+      <div class="otherOptions">
+        <div id="randomMoviePlaceholder-1">
+          <div id="movieCover-1"></div>
+          <p id="streamingService-1">Streaming Service:</p>
+          <p id="movieTitle-1">Title:</p>
+          <p id="movieGenre-1">Genre:</p>
+          <p id="movieYear-1">Year:</p>
+          <p id="imdbRating">IMDb Rating:</p>
+          <p id="rottenTomatoesRating">Rotten Tomatoes Rating:</p>
+        </div>
+        <div id="randomMoviePlaceholder-2">
+          <div id="movieCover-2"></div>
+          <p id="streamingService-2">Streaming Service:</p>
+          <p id="movieTitle-2">Title:</p>
+          <p id="movieGenre-2">Genre:</p>
+          <p id="movieYear-2">Year:</p>
+          <p id="imdbRating">IMDb Rating:</p>
+          <p id="rottenTomatoesRating">Rotten Tomatoes Rating:</p>
+        </div>
+        <div id="randomMoviePlaceholder-3">
+          <div id="movieCover-3"></div>
+          <p id="streamingService-3">Streaming Service:</p>
+          <p id="movieTitle-3">Title:</p>
+          <p id="movieGenre-3">Genre:</p>
+          <p id="movieYear-3">Year:</p>
+          <p id="imdbRating">IMDb Rating:</p>
+          <p id="rottenTomatoesRating">Rotten Tomatoes Rating:</p>
+        </div>
+        <div id="randomMoviePlaceholder-4">
+          <div id="movieCover-4"></div>
+          <p id="streamingService-4">Streaming Service:</p>
+          <p id="movieTitle-4">Title:</p>
+          <p id="movieGenre-4">Genre:</p>
+          <p id="movieYear-4">Year:</p>
+          <p id="imdbRating">IMDb Rating:</p>
+          <p id="rottenTomatoesRating">Rotten Tomatoes Rating:</p>
+        </div>
       </div>
-      <div id="randomMoviePlaceholder-2">
-        <div id="movieCover-2"></div>
-        <p id="streamingService-2">Streaming Service:</p>
-        <p id="movieTitle-2">Title:</p>
-        <p id="movieGenre-2">Genre:</p>
-        <p id="movieYear-2">Year:</p>
-        <p id="imdbRating">IMDb Rating: </p>
-<p id="rottenTomatoesRating">Rotten Tomatoes Rating: </p>
-      </div>
-      <div id="randomMoviePlaceholder-3">
-        <div id="movieCover-3"></div>
-        <p id="streamingService-3">Streaming Service:</p>
-        <p id="movieTitle-3">Title:</p>
-        <p id="movieGenre-3">Genre:</p>
-        <p id="movieYear-3">Year:</p>
-        <p id="imdbRating">IMDb Rating: </p>
-<p id="rottenTomatoesRating">Rotten Tomatoes Rating: </p>
-      </div>
-      <div id="randomMoviePlaceholder-4">
-        <div id="movieCover-4"></div>
-        <p id="streamingService-4">Streaming Service:</p>
-        <p id="movieTitle-4">Title:</p>
-        <p id="movieGenre-4">Genre:</p>
-        <p id="movieYear-4">Year:</p>
-        <p id="imdbRating">IMDb Rating: </p>
-<p id="rottenTomatoesRating">Rotten Tomatoes Rating: </p>
-      </div>
-    </div>
-  </main>
+    </main>
     <footer>
       <p>Created by Group 4 - The Defenders!</p>
-      <img id="foot-img"  src="assets/images/Defenders-2017-Cover.jpg">
-      <ul>Credits: 
+      <img id="foot-img" src="assets/images/Defenders-2017-Cover.jpg" />
+      <ul>
+        Credits:
         <li>CSS Framework - normalize.css - @necolas.</li>
       </ul>
     </footer>
