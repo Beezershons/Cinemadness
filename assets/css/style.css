@@ -2,11 +2,12 @@
 :root {
   --MainBlack: #212121;
   --MainGray: rgb(72, 72, 72);
-  --BlueLettering: #0066ff;
+  --BlueLettering: #00aeff;
   --WhiteLettering: #f2f2f2;
   --movieDiscripfontsize: 16px;
 }
 
+/* sets font and styling for the body section of the html */
 body {
   font-family: 'Comfortaa', sans-serif;
   font-size: var(--movieDiscripfontsize);
@@ -14,6 +15,7 @@ body {
   color: var(--WhiteLettering);
 }
 
+/* sets font and styling for the body section of the html */
 header {
   font-family: 'Young Serif', serif;
   font-size: 32px;
@@ -22,27 +24,33 @@ header {
   text-align: center;
 }
 
+/* sets the styling if the name of the website */
 .webTitle {
   font-size: 70px;
   font-family: 'Rubik Doodle Shadow', sans-serif;
 }
+
+/* sets the styling for the head1 class */
 .head1{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* sets the styling for the streamingService id */
 #streamingService{
   height: 30px;
   font-size: var(--movieDiscripfontsize);
   width: auto;
 }
 
+/* sets styling for the genreChoices id */
 #genreChoices{
   height: 30px;
   font-size: 16px;
 }
 
+/* sets styling for the randomize button */
 .randBtn {
   background-color: var(--MainGray);
   color: var(--WhiteLettering);
@@ -53,6 +61,7 @@ header {
   transition:300ms;
 }
 
+/* adds an effect when the randomize button is hovered over */
 .randBtn:hover {
   background-color: var(--BlueLettering);
   color: var(--MainBlack);
@@ -60,6 +69,7 @@ header {
   transition: 300ms;
 }
 
+/* sets styling for the backupLable class */
 .backupLable {
   text-align: center;
   font-size: 30px;
