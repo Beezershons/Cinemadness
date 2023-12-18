@@ -212,7 +212,6 @@ streamingServiceId,
 genre
 ) {
 const providerName = $('#streamingService').val();
-
 const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
 $.ajax({
     url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}`,
