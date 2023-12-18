@@ -70,9 +70,11 @@ header {
   background-color: var(--MainBlack);
   display: flex;
   flex-flow: row wrap;
+  text-wrap: wrap;
   margin: 20px;
   font-size: 25px;
   align-items: center;
+  justify-content: space-around;
 }
 
 /* adds padding to the head1 class */
