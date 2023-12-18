@@ -36,3 +36,10 @@ This is the site, when first loaded, after one sit-down session...
 And the site again, with a random movie generated...
 
 ![Site with a randomized movie](assets/images/Screenshot-randomized.png)
+
+Final layout with a movie... 
+
+![image](https://github.com/Beezershons/Cinemadness/assets/144726483/f7952c8b-a46d-4c79-b277-08191192c320)
+
+
+
