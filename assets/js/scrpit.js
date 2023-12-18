@@ -103,11 +103,14 @@ $('.randBtn').click(function () {
         const genre = $('#genreChoices').val();
         const providerName = $('#streamingService').val();
     
+        // Map streaming services to TMDB API endpoints
         const streamingServiceMap = {
             netflix: '8',
             amazon_prime: '119',
+            // Add more streaming services as needed
         };
     
+        // Get the TMDB streaming service id for the selected streaming service
         const tmdbStreamingServiceId = streamingServiceMap[streamingService] || '';
     
         $.ajax({
@@ -116,21 +119,12 @@ $('.randBtn').click(function () {
             data: {
                 api_key: apiKey,
                 with_genres: getGenreId(genre),
-                with_watch_providers: tmdbStreamingServiceId,
+                with_watch_providers: tmdbStreamingServiceId, // Add streaming service parameter
             },
             success: function (data) {
                 const randomIndex = Math.floor(Math.random() * data.results.length);
                 const movie = data.results[randomIndex];
                 console.log('Random Movie:', movie);
-    
-                // Save random movie details to local storage
-                saveRandomMovieToLocalStorage(movie);
-    
-                const imdbId = movie.imdb_id;
-                console.log('IMDb ID:', imdbId);
-                const movieRating = getMovieDetailsFromOMDB(imdbId);
-    
-                console.log('Random Movie Details:', movie);
     
                 // Update the HTML with movie details
                 $('#movieTitle').text(`Title: ${movie.title}`);
@@ -139,11 +133,10 @@ $('.randBtn').click(function () {
                 $('#movieCover').html(
                     `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`
                 );
-                $(`#movieService`).text(`Streaming Service: ${providerName}`);
+                $('#movieService').text(`Streaming Service: ${providerName}`);
     
-                console.log('IMDb ID:', movie.imdb_id);
-    
-                getMovieDetailsFromOMDB(movie.imdb_id);
+                // Fetch user ratings from TMDB
+                getUserRatingFromTMDB(movie.id);
             },
             error: function (error) {
                 console.error('Error fetching random movie:', error);
@@ -151,20 +144,37 @@ $('.randBtn').click(function () {
         });
     }
     
+    function getUserRatingFromTMDB(movieId) {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movieId}`,
+            method: 'GET',
+            data: {
+                api_key: apiKey,
+            },
+            success: function (data) {
+                const tmdbUserRating = data.vote_average;
+                console.log('TMDB User Rating:', tmdbUserRating);
+    
+                // Update UI with TMDB user rating
+                $('#imdbRating').text(`TMDB User Rating: ${tmdbUserRating}`);
+            },
+            error: function (error) {
+                console.error('Error fetching TMDB user rating:', error);
+            },
+        });
+    }
+    
+    
+    // Function to save the random movie and its rating to local storage
     function saveRandomMovieToLocalStorage(movie) {
-        // Get existing movies from local storage
+        // Check if there are existing movies in local storage
         const existingMovies = JSON.parse(localStorage.getItem('randomMovies')) || [];
     
-        // Add the new movie to the existing list
+        // Add the new movie to the list
         existingMovies.push(movie);
     
         // Save the updated list back to local storage
         localStorage.setItem('randomMovies', JSON.stringify(existingMovies));
-    }
-    
-    // Function to retrieve random movies from local storage
-    function getSavedRandomMoviesFromLocalStorage() {
-        return JSON.parse(localStorage.getItem('randomMovies')) || [];
     }
     
 
@@ -223,55 +233,75 @@ return genreMap[genre] || '';
 
 // Function to generate a random movie and update the UI for the other random movie placeholders
 function generateRandomMovieForPlaceholder(
-placeholderNumber,
-genreId,
-streamingServiceId,
-genre
+    placeholderNumber,
+    genreId,
+    streamingServiceId,
+    genre
 ) {
-const providerName = $('#streamingService').val();
-const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
-$.ajax({
-    url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}`,
-    method: 'GET',
-    data: {
-    api_key: apiKey,
-    with_genres: genreId,
-    with_watch_providers: streamingServiceId,
-    },
-    success: function (data) {
-    console.log(data);
-    const randomIndex = Math.floor(Math.random() * data.results.length);
-    const movie = data.results[randomIndex];
+    const providerName = $('#streamingService').val();
+    const apiKey = '2f7924a1e90e50c355edf3798e0bf400';
+    $.ajax({
+        url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}`,
+        method: 'GET',
+        data: {
+            api_key: apiKey,
+            with_genres: genreId,
+            with_watch_providers: streamingServiceId,
+        },
+        success: function (data) {
+            console.log(data);
+            const randomIndex = Math.floor(Math.random() * data.results.length);
+            const movie = data.results[randomIndex];
 
-      // Update the HTML with movie details for the specific placeholder
-    $(`#movieTitle-${placeholderNumber}`).text(`Title: ${movie.title}`);
-    $(`#movieGenre-${placeholderNumber}`).text(`Genre: ${genre}`);
-    $(`#movieYear-${placeholderNumber}`).text(
-        `Year: ${movie.release_date.substring(0, 4)}`
-    );
-    // Update the movie cover for the specific placeholder
-    $(`#movieCover-${placeholderNumber}`).html(
-    `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width="250" height="375" alt="Movie Poster">`
-    );
-    $(`#streamingService-${placeholderNumber}`).text(
-    `Streaming Service: ${providerName}`
-    );
-    },
-    error: function (error) {
-    console.error(
-        `Error fetching random movie for placeholder ${placeholderNumber}:`,
-        error
-    );
-    },
-});
+            // Update the HTML with movie details for the specific placeholder
+            $(`#movieTitle-${placeholderNumber}`).text(`Title: ${movie.title}`);
+            $(`#movieGenre-${placeholderNumber}`).text(`Genre: ${genre}`);
+            $(`#movieYear-${placeholderNumber}`).text(
+                `Year: ${movie.release_date.substring(0, 4)}`
+            );
+            // Update the movie cover for the specific placeholder
+            $(`#movieCover-${placeholderNumber}`).html(
+                `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width="250" height="375" alt="Movie Poster">`
+            );
+            $(`#streamingService-${placeholderNumber}`).text(
+                `Streaming Service: ${providerName}`
+            );
+
+            // Fetch user ratings from TMDB for the placeholder movie
+            getUserRatingFromTMDB(movie.id, placeholderNumber, apiKey);
+        },
+        error: function (error) {
+            console.error(
+                `Error fetching random movie for placeholder ${placeholderNumber}:`,
+                error
+            );
+        },
+    });
 }
 
-$(document).ready(function () {
-$('button').click(function () {
-    // Get random movies for all four placeholders
-    generateRandomMovieForPlaceholder(1, '27', '8', 'Horror');
-    generateRandomMovieForPlaceholder(2, '35', '119', 'Comedy');
-    generateRandomMovieForPlaceholder(3, '18', '8', 'Drama');
-    generateRandomMovieForPlaceholder(4, '10749', '119', 'Romance');
-});
-});
+// Function to fetch user ratings from TMDB for a specific movie
+function getUserRatingFromTMDB(movieId, placeholderNumber, apiKey) {
+    $.ajax({
+        url: `https://api.themoviedb.org/3/movie/${movieId}`,
+        method: 'GET',
+        data: {
+            api_key: apiKey,
+        },
+        success: function (data) {
+            const tmdbUserRating = data.vote_average;
+            console.log(`TMDB User Rating for Placeholder ${placeholderNumber}:`, tmdbUserRating);
+
+            // Update UI with TMDB user rating for the specific placeholder
+            $(`#imdbRating-${placeholderNumber}`).text(`TMDB User Rating: ${tmdbUserRating}`);
+        },
+        error: function (error) {
+            console.error(`Error fetching TMDB user rating for Placeholder ${placeholderNumber}:`, error);
+        },
+    });
+}
+
+// Example: Call the function for all four placeholders
+generateRandomMovieForPlaceholder(1, '27', '8', 'Horror');
+generateRandomMovieForPlaceholder(2, '35', '119', 'Comedy');
+generateRandomMovieForPlaceholder(3, '18', '8', 'Drama');
+generateRandomMovieForPlaceholder(4, '10749', '119', 'Romance');
