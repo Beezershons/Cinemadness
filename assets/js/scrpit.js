@@ -97,59 +97,76 @@ $('.randBtn').click(function () {
     generateRandomMovieForPlaceholder(4, genreId, streamingServiceId, genre);
     }
     });
+    // random movie function
     function getRandomMovie() {
-    const streamingService = $('#streamingService').val();
-    const genre = $('#genreChoices').val();
-    const providerName = $('#streamingService').val();
-
-    // Map streaming services to TMDB API endpoints
-    const streamingServiceMap = {
-    netflix: '8',
-    amazon_prime: '119',
-    };
-
-    // Get the TMDB streaming service id for the selected streaming service
-    const tmdbStreamingServiceId = streamingServiceMap[streamingService] || '';
-
-    $.ajax({
-    url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}&watch_region=usa`,
-    method: 'GET',
-    data: {
-        api_key: apiKey,
-        with_genres: getGenreId(genre),
-        with_watch_providers: tmdbStreamingServiceId, // Add streaming service parameter
-    },
-    success: function (data) {
-        const randomIndex = Math.floor(Math.random() * data.results.length);
-        const movie = data.results[randomIndex];
-        console.log('Random Movie:', movie);
-
-        const imdbId = movie.imdb_id;
-        console.log('IMDb ID:', imdbId);
-        const movieRating = getMovieDetailsFromOMDB(imdbId);
-
-        // Debugging: Log the retrieved movie details
-        console.log('Random Movie Details:', movie);
-
-        // Update the HTML with movie details
-        $('#movieTitle').text(`Title: ${movie.title}`);
-        $('#movieGenre').text(`Genre: ${genre}`);
-        $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
-        $('#movieCover').html(
-        `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`
-        );
-    $(`#movieService`).text(`Streaming Service: ${providerName}`);
-
-    // Debugging: Log the IMDb ID
-    console.log('IMDb ID:', movie.imdb_id);
-
-    getMovieDetailsFromOMDB(movie.imdb_id);
-    },
-    error: function (error) {
-    console.error('Error fetching random movie:', error);
-    },
-});
-}
+        const streamingService = $('#streamingService').val();
+        const genre = $('#genreChoices').val();
+        const providerName = $('#streamingService').val();
+    
+        const streamingServiceMap = {
+            netflix: '8',
+            amazon_prime: '119',
+        };
+    
+        const tmdbStreamingServiceId = streamingServiceMap[streamingService] || '';
+    
+        $.ajax({
+            url: `https://api.themoviedb.org/3/discover/movie?with_watch_providers=${providerName}&watch_region=usa`,
+            method: 'GET',
+            data: {
+                api_key: apiKey,
+                with_genres: getGenreId(genre),
+                with_watch_providers: tmdbStreamingServiceId,
+            },
+            success: function (data) {
+                const randomIndex = Math.floor(Math.random() * data.results.length);
+                const movie = data.results[randomIndex];
+                console.log('Random Movie:', movie);
+    
+                // Save random movie details to local storage
+                saveRandomMovieToLocalStorage(movie);
+    
+                const imdbId = movie.imdb_id;
+                console.log('IMDb ID:', imdbId);
+                const movieRating = getMovieDetailsFromOMDB(imdbId);
+    
+                console.log('Random Movie Details:', movie);
+    
+                // Update the HTML with movie details
+                $('#movieTitle').text(`Title: ${movie.title}`);
+                $('#movieGenre').text(`Genre: ${genre}`);
+                $('#movieYear').text(`Year: ${movie.release_date.substring(0, 4)}`);
+                $('#movieCover').html(
+                    `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" width= "250" height= "375" alt="Movie Poster">`
+                );
+                $(`#movieService`).text(`Streaming Service: ${providerName}`);
+    
+                console.log('IMDb ID:', movie.imdb_id);
+    
+                getMovieDetailsFromOMDB(movie.imdb_id);
+            },
+            error: function (error) {
+                console.error('Error fetching random movie:', error);
+            },
+        });
+    }
+    
+    function saveRandomMovieToLocalStorage(movie) {
+        // Get existing movies from local storage
+        const existingMovies = JSON.parse(localStorage.getItem('randomMovies')) || [];
+    
+        // Add the new movie to the existing list
+        existingMovies.push(movie);
+    
+        // Save the updated list back to local storage
+        localStorage.setItem('randomMovies', JSON.stringify(existingMovies));
+    }
+    
+    // Function to retrieve random movies from local storage
+    function getSavedRandomMoviesFromLocalStorage() {
+        return JSON.parse(localStorage.getItem('randomMovies')) || [];
+    }
+    
 
 function getMovieDetailsFromOMDB(imdbId) {
 const omdbApiKey = '55929535';
